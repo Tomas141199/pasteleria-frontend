@@ -8,6 +8,20 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+/* Heading */
+.text-stroke {
+  color: black;
+  -webkit-text-fill-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  @apply font-heading;
+}
+
 /* Burguer Styles */
 .hamburguer .bar,
 .hamburguer:after,
@@ -28,4 +42,50 @@ body {
 
 .menu-nav.true {
   @apply block opacity-100;
+}
+
+/* Header Styles */
+.header.true {
+  @apply h-60 bg-pink-1;
+}
+
+.header.false {
+  @apply h-28 text-white;
+  background: url("/images/bg.png");
+}
+
+.header.false .hamburguer .bar,
+.header.false .hamburguer:after,
+.header.false .hamburguer:before {
+  @apply bg-white;
+}
+
+.header.false * {
+  @apply text-white;
+}
+
+/* Ingredients */
+.ingredient:hover {
+  @apply bg-slate-50 rounded;
+}
+
+.ingredient:hover .pill {
+  @apply bg-yellow-500 text-white;
+}
+
+.ingredient-image:after {
+  content: url("/images/check.png");
+  @apply absolute top-1/2 -translate-y-1/2 opacity-0;
+}
+
+.ingredient:hover .ingredient-image:after {
+  @apply opacity-100;
+}
+
+.pastel:hover {
+  @apply shadow-xl;
+}
+
+.pastel:hover .details {
+  @apply scale-y-100;
 }
