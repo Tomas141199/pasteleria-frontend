@@ -1,3 +1,4 @@
+import Fade from "react-reveal";
 import Ingrediente from "../components/Ingrediente";
 import Layout from "../components/Layout";
 import Pastel from "../components/Pastel";
@@ -17,12 +18,14 @@ const VentaPasteles = () => {
           <Ingrediente />
         </div>
         <div className="w-4/5 grid grid-cols-2 md:grid-cols-3 mb-52">
-          <Pastel />
-          <Pastel />
-          <Pastel />
-          <Pastel />
-          <Pastel />
-          <Pastel />
+          <Fade bottom>
+            <Pastel />
+            <Pastel />
+            <Pastel />
+            <Pastel />
+            <Pastel />
+            <Pastel />
+          </Fade>
         </div>
       </div>
     </Layout>
