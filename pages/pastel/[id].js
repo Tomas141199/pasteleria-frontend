@@ -2,13 +2,15 @@ import Layout from "../../components/Layout";
 import Zoom from "react-img-zoom";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 
-const PastelCompra = () => {
+
+const PastelCompra = ({cake}) => {
+  const {name,price,description,size,picture}=cake.attributes;
   return (
     <Layout>
       <div className="container mx-auto flex gap-2 md:flex-nowrap flex-wrap p-4 items-center">
         <div className="w-full md:w-2/4 mx-auto">
           <Zoom
-            img="/images/pastel.jpg"
+            img={`http://localhost:1337${picture.data.attributes.url}`}
             zoomScale={2}
             height={600}
             width={600}
@@ -17,14 +19,14 @@ const PastelCompra = () => {
         </div>
         <div className="p-8 w-full md:w-2/4 mx-auto">
           <h1 className="text-2xl text-slate-800 font-heading font-semibold">
-            Almendra al Kirsh
+            {name}
           </h1>
-          <span className="text-yellow-500 font-bold block mt-3">$425.00</span>
+          <span className="text-yellow-500 font-bold block mt-3">${price}</span>
           <p className="text-xs mt-4 text-slate-400">
-            Pastel de pan de almendras, bañado en licor de cereza.
+           {description}
           </p>
           <span className="block mt-4 font-bold text-xs text-slate-500">
-            8 rebanadas aprox.
+            {size}
           </span>
           <div className="border-y-2 mt-8 text-xs">
             <div className="my-4">
@@ -116,5 +118,16 @@ const PastelCompra = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps({query:{id}}){
+  const res= await fetch(`${process.env.API_URL}/cakes/${id}?populate=picture`);
+
+  const cakes = await res.json();
+  console.log(cakes.data);
+
+  return{
+    props: { cake:cakes.data},
+  };
+}
 
 export default PastelCompra;
