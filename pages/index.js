@@ -10,9 +10,9 @@ export default function Home() {
           <h1 className="text-2xl font-logo">Bienvenido a LePats</h1>
           <h3 className="font-heading text-3xl mt-2">Desde 1999 en Puebla</h3>
           <p className="mt-2 text-sm text-slate-500 w-3/4 mx-auto">
-            Aliqua ullamco laboris aliquip culpa ipsum aute Lorem aute cillum
-            in. Nisi excepteur deserunt anim velit. Minim reprehenderit eu
-            laboris duis adipisicing adipisicing magna anim.
+            La pastelería LePats comenzó como un hobby universitario y una forma de celebrar los días especiales
+             en familia haciendo el pastel favorito de cada miembro de la familia cada año y cada cumpleaños. 
+             Actualmente es una empresa de venta al menudeo y por recomendación de cliente a cliente.
           </p>
         </div>
         <Fade>

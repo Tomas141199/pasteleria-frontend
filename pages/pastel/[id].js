@@ -1,10 +1,43 @@
 import Layout from "../../components/Layout";
 import Zoom from "react-img-zoom";
 import { Form, Formik, Field, ErrorMessage } from "formik";
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import Router from "next/router";
 
 const PastelCompra = ({cake}) => {
   const {name,price,description,size,picture}=cake.attributes;
+  
+  const Comprado = (values) => {
+
+    const MySwal = withReactContent(Swal)
+
+    Swal.fire({
+      title: 'Compra realizada!',
+      text: "Tu pastel está en camino",
+      html: `<div>
+      <h1>Compra realizada</h1>
+      <p>Tu pastel está en camino :)</p>
+      <h2>Detalles del pedido:</h2>
+      <p>Persona que recibe: ${values.nombre}</p>
+      <p>Dirección: ${values.direccion}</p>
+      <p>Envío: $100</p>
+      <p>Total: ${price+100}</p>
+    </div>`,
+      icon: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'yey!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Router.push("/");
+      }
+    })
+
+
+    
+
+  }
+
   return (
     <Layout>
       <div className="container mx-auto flex gap-2 md:flex-nowrap flex-wrap p-4 items-center">
@@ -43,7 +76,7 @@ const PastelCompra = ({cake}) => {
                   cv: "",
                   direccion: "",
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={(values) => Comprado(values)}
               >
                 <Form className="mt-4">
                   <div className="mb-3">
